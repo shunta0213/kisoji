@@ -7,7 +7,9 @@ from fitting_ellipse import calculate_params
 from helper import get_major_and_minor_axis_endpoints, read_data
 
 
-"""memo
+"""
+result
+
 0
 h: -7.15874999999977e-05
 k: 2.780312364420516e-17

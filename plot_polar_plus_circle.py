@@ -3,6 +3,12 @@ import numpy as np
 from helper import read_data, polar_to_cartesian
 from fitting_circle import circle_fitting
 
+"""
+result:
+a: -0.0003154726505443008
+b: 0.00030219489885071184
+rad: 0.32040401732139506
+"""
 
 if __name__ == "__main__":
     filename = "2-2-45-sqrt"
