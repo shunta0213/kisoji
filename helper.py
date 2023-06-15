@@ -48,16 +48,6 @@ def interleave_arrays(a, b):
     return np.ravel(np.column_stack((a, b)))
 
 
-def get_major_and_minor_axis_endpoints(r, theta):
-    maxima, maxima_theta, minima, minima_theta = find_extrema(r, theta)
-    maxima_x, maxima_y = polar_to_cartesian(maxima, maxima_theta)
-    minima_x, minima_y = polar_to_cartesian(minima, minima_theta)
-
-    major_axis_points = interleave_arrays(maxima_x, maxima_y)
-    minor_axis_points = interleave_arrays(minima_x, minima_y)
-    return major_axis_points, minor_axis_points
-
-
 def calculate_rotation(x1, y1, x2, y2):
     """
     Given the coordinates of the two endpoints of the major axis,
@@ -75,32 +65,6 @@ def calculate_center_and_axis_length(x1, y1, x2, y2):
     center_y = (y1 + y2) / 2
     axis_length = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
     return center_x, center_y, axis_length
-
-
-def calculate_params(major_axis_endpoints, minor_axis_endpoints):
-    """
-    calculate ellipse parameters
-    ((x-{h})*cos({theta}) + (y-{k})*sin({theta}))^2/{a**2} + ((x-{h})*sin({theta}) - (y-{k})*cos({theta}))^2/{b**2} = 1
-    """
-    (
-        major_center_x,
-        major_center_y,
-        major_axis_length,
-    ) = calculate_center_and_axis_length(*major_axis_endpoints)
-    (
-        minor_center_x,
-        minor_center_y,
-        minor_axis_length,
-    ) = calculate_center_and_axis_length(*minor_axis_endpoints)
-    rotation = calculate_rotation(*major_axis_endpoints)
-
-    return (
-        major_center_x,
-        major_center_y,
-        major_axis_length / 2,
-        minor_axis_length / 2,
-        rotation,
-    )
 
 
 def spline_interp(in_theta, in_r):

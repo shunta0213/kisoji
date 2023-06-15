@@ -1,8 +1,10 @@
 import numpy as np
 import pandas as pd
-from helper import get_major_and_minor_axis_endpoints, calculate_params
 import matplotlib.pyplot as plt
 import scienceplots
+
+from fitting_ellipse import calculate_params
+from helper import get_major_and_minor_axis_endpoints
 
 
 """memo
