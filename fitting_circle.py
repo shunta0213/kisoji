@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def circle_fitting(xi, yi):
     M = np.array(
         [
