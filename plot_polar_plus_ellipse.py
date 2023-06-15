@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import scienceplots
 
 from fitting_ellipse import calculate_params
-from helper import get_major_and_minor_axis_endpoints
+from helper import get_major_and_minor_axis_endpoints, read_data
 
 
 """memo
@@ -42,12 +42,10 @@ if __name__ == "__main__":
     lam_angle = "30"
 
     filename = "2-2-" + lam_angle + "-sqrt"
-    print(filename)
-    df = pd.read_csv("./csv/" + filename + ".csv", delimiter=",", header=None)
 
-    theta = df.iloc[:, 0].values
-    r = df.iloc[:, 1].values
-    theta = np.deg2rad(theta)
+    print(filename)
+    r, theta = read_data(filename)
+
     major_axis_endpoints, minor_axis_endpoints = get_major_and_minor_axis_endpoints(
         r, theta
     )

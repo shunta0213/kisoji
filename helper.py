@@ -1,6 +1,16 @@
 import numpy as np
 import math
+import pandas as pd
 from scipy.interpolate import interp1d
+
+
+def read_data(filename):
+    df = pd.read_csv("./csv/" + filename + ".csv", delimiter=",", header=None)
+
+    theta = df.iloc[:, 0].values
+    r = df.iloc[:, 1].values
+    theta = np.deg2rad(theta)
+    return r, theta
 
 
 def get_max_r_and_corresponding_theta(r, theta):
