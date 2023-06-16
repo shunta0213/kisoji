@@ -39,6 +39,14 @@ if __name__ == "__main__":
     ax.set_rgrids(np.linspace(0, 0.5, 6), angle=75)
 
     ax.plot(theta, r, "o")
-    ax.plot(circle_theta, circle_r)
+    ax.plot(circle_theta, circle_r, label="the shape of polarization")
 
+    # legends
+    angle = np.deg2rad(67.5)
+    ax.legend(
+        loc="lower left",
+        bbox_to_anchor=(0.5 + np.cos(angle) / 2, 0.55 + np.sin(angle) / 2),
+    )
+
+    plt.savefig("./graph-for-consi/" + filename + "-polar-circle.png", format="png")
     plt.show()

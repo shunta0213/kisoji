@@ -3,8 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import scienceplots
 
-from fitting_ellipse import calculate_params
-from helper import get_major_and_minor_axis_endpoints, read_data
+from fitting_ellipse import calculate_params, get_major_and_minor_axis_endpoints
+from helper import read_data
 
 
 """
@@ -64,7 +64,6 @@ if __name__ == "__main__":
     t = np.linspace(0, 2 * np.pi, 1000)
     x = h + a * np.cos(t) * np.cos(phi) - b * np.sin(t) * np.sin(phi)
     y = k + a * np.cos(t) * np.sin(phi) + b * np.sin(t) * np.cos(phi)
-
     ellipse_r = np.sqrt(x**2 + y**2)
     ellipse_theta = np.arctan2(y, x)
 
@@ -79,6 +78,14 @@ if __name__ == "__main__":
     ax.set_rgrids(np.linspace(0, 0.5, 6), angle=75)
 
     ax.plot(theta, r, "o")
-    ax.plot(ellipse_theta, ellipse_r)
+    ax.plot(ellipse_theta, ellipse_r, label="the shape of polarization")
 
-    plt.show()
+    # legends
+    angle = np.deg2rad(67.5)
+    ax.legend(
+        loc="lower left",
+        bbox_to_anchor=(0.5 + np.cos(angle) / 2, 0.55 + np.sin(angle) / 2),
+    )
+
+    plt.savefig("./graph-for-consi/" + filename + "-polar-ellipse.png", format="png")
+    # plt.show()
