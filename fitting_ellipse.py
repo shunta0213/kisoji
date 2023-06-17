@@ -41,3 +41,27 @@ def calculate_params(major_axis_endpoints, minor_axis_endpoints):
         minor_axis_length / 2,
         rotation,
     )
+
+
+def calculate_params_origin(major_axis_endpoints, minor_axis_endpoints):
+    """
+    calculate ellipse parameters with the center at the origin
+    (x*cos(theta) + y*sin(theta))^2/a**2 + (x*sin(theta) - y*cos(theta))^2/b**2 = 1
+    """
+    (
+        major_center_x,
+        major_center_y,
+        major_axis_length,
+    ) = calculate_center_and_axis_length(*major_axis_endpoints)
+    (
+        minor_center_x,
+        minor_center_y,
+        minor_axis_length,
+    ) = calculate_center_and_axis_length(*minor_axis_endpoints)
+    rotation = calculate_rotation(*major_axis_endpoints)
+
+    return (
+        major_axis_length / 2,
+        minor_axis_length / 2,
+        rotation,
+    )

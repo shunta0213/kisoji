@@ -10,7 +10,7 @@ from helper import spline_interp, read_data
 1, 1-expanded, 2-1, 2-1-90, 2-2-0, 10, 15, 30, 45
 - sqrt
 """
-filename = "1"
+filename = "2-2-15"
 
 if __name__ == "__main__":
     r, theta = read_data(filename)
